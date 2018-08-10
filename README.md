@@ -1,31 +1,7 @@
 # Beginner Bootcamp Homework
 
-Hello beginner bootcampers. Here is your first formal homework  assignment!
-
-
-**I expect you to do this assignment individually. I will notice if you copy another students code.**  
-To be 100% clear: If I notice you copying other students homework you will get an invoice for the course.  
-Don't discuss the homework in slack
-
-- Download the starter files
-- Make a local git repo and use it to track your work
-- When you're done add a remote and push to your github
-- **Send the link to your repo to teachers@codaisseur.com before Sunday 20:00**
-
-Expectations:
-- I expect you give this homework assignment your best shot.
-- You should be able to complete this homework without my help if there was no time limit.
-- I expect you to spend 8 hours on this assignment. You can spend more but prioritize enough sleep, doing laundry etc.
-- I expect everyone to finish section 1
-- I expect everyone to finish at least some of section 2 & 3
-- I expect some people with programming experience before this bootcamp to able to finish the whole assignment within the time-limit.
-
-Tips:
-- Use readest, stackoverflow and documentation
-- Check the browser console for hints from the tests
-- You can first finish section 2 completely and then do section 3 OR you can build the features one by one. For example implement the `rest` function and then make the html and event listeners for it.
-- You get no points for Extra CSS that is not in the assignment (except the fuzzy feeling in your own brain)
-- If you feel you had a bad result write a reflection on your way of working in the readme of your project
+First homework during the academy using basic JavaScript.
+There some instructions provided below.
 
 ## Section 1. Creating the hero object
 
