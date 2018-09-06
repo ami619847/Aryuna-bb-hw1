@@ -1,8 +1,10 @@
 # Beginner Bootcamp Homework
 
 First homework during the academy using basic JavaScript.
-There some instructions provided below.
+There are four main sections with some instructions below.
 
+      Aryuna-bb-hw1/images/hero-game.png
+    
 ## Section 1. Creating the hero object
 
 Declare the global variable hero and assign it an object. This object has the following keys and values:
