@@ -1,168 +1,146 @@
+// 1. declaring the hero variable
 var hero = {
   name: "Ari",
-  heroic: false,
+  heroic: true,
   inventory: ['sword1','sword2'],
   health: 8,
-  weapon: {type:"sword3", damage: 5}
+  weapon: {
+    type:"sword3", 
+    damage: 5
+  }
 };
-//console.log(hero);
-var item = {type:"gun2", damage: 7}
-var creature = {
-  name: "Creature",
-  heroic: true,
-  inventory: ['knife1','knife2'],
-  health: 5,
-  weapon: {type:"gun", damage: 7}
-};
-
-var defender = {
-  name: "Defender",
-  heroic: false,
-  inventory: ['shield1','shield2'],
-  health: 9,
-  weapon: {type:"shield", damage: 2}
-};
-
-var attacker = {
-  name: "Attacker",
-  heroic: true,
-  inventory: ['machete1','machete2'],
-  health: 3,
- weapon: {type:"machete", damage: 7}
-};
+// console.log(hero);
 
 
+// 2. implementing the game logic
 function rest(creature) {
-  health = 10
-    return health
-};
-console.log(rest(creature));
-window.onload = function(){
-  document.getElementById( "imageRest" ).onclick = function(){
-    console.log('You need some rest, you health is ' + rest(hero));
-    console.log('imageRest was clicked');
-    };
-};
-
-
-function pickUpItem(creature, item){
-  var item = {type:"gun2", damage: 7};
-  var hero = {
-    name: "Ari",
-    heroic: false,
-    inventory: ['sword1','sword2'],
-    health: 8,
-    weapon: {type:"sword3", damage: 5}
-  };
-  var removedElements = creature.inventory.splice(1,1,item.type)
+  creature.health = 10
     return creature
 };
-console.log(pickUpItem(hero));
-window.onload = function(){
-  document.getElementById( "imageGun" ).onclick = function(){
-    console.log('Your weapon is here ' + pickUpItem(hero, item));
-    console.log('imageGun was clicked');
-  };
+//console.log(creature);
+
+function pickUpItem(creature, item){
+  creature.inventory.push(item)
+  return creature
 };
+//console.log(creature);
 
-
-function dealDamage (defender, attacker){
-  /*var defender = {
-    name: "Defender",
-    heroic: false,
-    inventory: ['shield1','shield2'],
-    health: 9,
-    weapon: {type:"shield", damage: 2}
-  };
-  var attacker = {
-    name: "Attacker",
-    heroic: true,
-    inventory: ['machete1','machete2'],
-    health: 3,
-   weapon: {type:"machete", damage: 7}
- };
+function dealDamage (attacker, defender){
   defender.health = defender.health - attacker.weapon.damage
   return defender
 };
-console.log(dealDamage(defender));
+//console.log(defender);
+//console.log(attacker);
 
 function equipWeapon (creature, index){
-//DOESN'T work properly
- //declaring the index variable to the inventory array
-/* for (var index = creature.inventory.length; index >=0; index--);
- //replacing the weapon with the inventory element
- var removeWeapon = creature.weapon.type.splice(0,1,index);
- //removing the inventory element from the inventory
- creature.inventory.splice(index,1);*/
-
- //return creature;
-//};
-
-//Click on image part works
-console.log(equipWeapon(creature));
-window.onload = function(){
-  document.getElementById( "imageBag" ).onclick = function(){
-    console.log(equipWeapon(hero, window.prompt('Please choose the index of the weapon?')));
-    console.log('imageBag was clicked');
-  };
+  creature.weapon = creature.inventory[index];
+  creature.inventory.splice(index,1);
+  return creature
 };
+// console.log(creature.inventory);
 
-function doBattle(defender, attacker){
-  var defender= {
-    name: "heroicCreature",
-    heroic: true,
-    inventory: ['riffle1','riffle2'],
-    health: 4,
-    weapon: {type:"riffle", damage: 9}
-  };
-  var attacker = {
-    name: "Creature",
-    heroic: true,
-    inventory: ['knife1','knife2'],
-    health: 5,
-    weapon: {type:"gun", damage: 7}
-  };
-
-////DOESN'T work properly
-  /* if (defender == false) {
-    alert("Your heroicCreature is not heroic")
+function doBattle(heroicCreature, creature){
+  if (heroicCreature.heroic != true) {
     return null
   };
-
-  while (defender.health, attacker.health >= 0) {
-    dealDamage(defender, attacker);
-    defender.health +=1;
-    if (creature.health >= 0) {
-      dealDamage(defender, attacker);
+  while (heroicCreature.health > 0 && creature.health > 0) {
+    dealDamage(heroicCreature, creature);
+    if (creature.health > 0) {
+      dealDamage(creature, heroicCreature);
+      //console.log('hero = '+heroicCreature.health+', creature = '+creature.health);
     };
   };
-
-  if (defender.health >= 0) {
-    return defender
-  } else { alert("Your heroicCreature is dead");
-};*/
-
-};
-console.log(doBattle(defender, attacker));
-
-window.onload = function(){
-  document.getElementById( "imageEnemy" ).onclick = function(){
-    console.log('Fight your enemy ' + doBattle(defender,attacker));
-    console.log('imageEnemy was clicked');
+  if (heroicCreature.health > 0) {
+    return heroicCreature
+  } else {
+    alert("You are dead")
   };
 };
 
-function displayStats(heroEnd){
-  var heroEnd = {
-    name: "Ari",
-    health: 1,
-    weapon: {type:"gun10", damage:1 }
-    };
-    console.log(heroEnd)
+
+// 3. UI & DOM
+let imageRest = document.getElementById("imageRest");
+imageRest.onclick = function() {
+  rest(hero);
+  console.log('You need some rest, you health is ' + hero.health);
+  // console.log('imageRest was clicked');
+  updateStats (hero);
+};
+
+let imageGun = document.getElementById( "imageGun" );
+imageGun.onclick = function() { 
+  pickUpItem(hero,{type: 'gun', damage: 5});
+  console.log('Your weapon is ' + hero.weapon);
+  // console.log('imageGun was clicked');
+  updateStats (hero);
+  weapon.parentNode.removeChild(weapon);
+};
+
+let imageEnemy = document.getElementById( "imageEnemy" );
+imageEnemy.onclick = function() {
+  var enemy = {
+    health: 8,
+    weapon: {
+      type: 'knife',
+      damage: 2
+    }
   };
-  window.onload = function(){
-    document.getElementById("endGameButton" ).innerHTML = "Game Over"
-  };
+  doBattle(hero, enemy);
+  console.log('Your health is ' + hero.health + ' and you damage is ' + hero.weapon.damage);
+  console.log('Fight your enemy, his health is ' + enemy);
+  // console.log('imageEnemy was clicked');
+  updateStats (hero);
+  enemy.parentNode.removeChild(enemy);
+};
+
+var imageBag = document.getElementById( "imageBag" );
+imageBag.onclick = function() {
+  equipWeapon(hero,window.prompt('Please choose the index of the weapon'));
+  console.log(hero.weapon);
+  // console.log('imageBag was clicked');
+  updateStats (hero);
+};
+
+function displayStats(hero) {
+  let heroName = document.getElementById("heroName");
+  heroName.innerHTML = "Hero's name is ${hero.name}";
+
+  let heroHealth = document.getElementById("heroHealth");
+  heroHealth.innerHTML = "Hero's health is ${hero.health}";
+  
+  let heroWeapon = document.getElementById("heroWeapon");
+  heroWeapon.innerHTML =  "Hero's weapon is ${hero.weapon.type} and damage ${hero.weapon.damage}";
+  // console.log(hero);
+};
+displayStats(hero);
 
 
-// UI
+// 4. stats and updates
+function displayInventory(hero){
+  let heroInventory = document.getElementById("heroInventory");
+  heroInventory.innerHTML = "Hero's inventory is " + hero.inventory;
+  hero.inventory.forEach(function(entry){     
+    let newWeaponType = document.createElement("weaponType");
+    let newWeaponTypeContent = document.createTextNode("new weapon");
+    newWeaponType.appendChild(newWeaponTypeContent);
+    let newWeaponDamage = document.createElement("weaponDamage");
+    let newWeponDamageValue = document.createTextNode("new weapon damage");
+    newWeaponDamage.appendChild(newWeponDamageValue);
+  });
+  // console.log(hero.inventory);
+};
+displayInventory(hero);
+
+function updateStats (hero){
+  displayStats(hero)
+  displayInventory(hero)
+};
+
+function changeHeroName(){
+  let newHeroName = document.getElementById("newHeroName");
+  let changeHeroName = document.getElementById("changeHeroName");
+  changeHeroName.onclick = function(){
+    hero.name = newHeroName.value
+  }
+  // console.log(hero.name); 
+};
