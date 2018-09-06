@@ -8,12 +8,26 @@
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <h1>HAVE FUN</h1>
+        <h1>HAVE FUN HERO</h1>
 
+        <div class="polaroid">
+          <img onclick="rest(hero); return false" id="imageRest" src="/home/aryunap/Aryuna-bb-hw1/images/sleep.png" alt="weekend over" style="width:100%;">
+          <div class="container">
+            <p>Get some rest</p>
+          </div>
+        </div>
+        
         <div class="polaroid">
           <img onclick="pickUpItem(); return false" id="imageGun" src="/home/aryunap/Aryuna-bb-hw1/images/gun.jpg" alt="gun" style="width:100%;">
           <div class="container">
             <p>Pick your weapon</p>
+          </div>
+        </div>
+        
+        <div class="polaroid">
+          <img onclick="doBattle(); return false"id="imageEnemy" src="/home/aryunap/Aryuna-bb-hw1/images/enemy.jpg" alt="enemy" style="width:100%;">
+          <div class="container" float="right">
+            <p>Your enemy</p>
           </div>
         </div>
 
@@ -23,24 +37,13 @@
             <p>Choose equipment</p>
           </div>
         </div>
-
-        <div class="polaroid">
-          <img onclick="doBattle(); return false"id="imageEnemy" src="/home/aryunap/Aryuna-bb-hw1/images/enemy.jpg" alt="enemy" style="width:100%;">
-          <div class="container" float="right">
-            <p>Your enemy</p>
-          </div>
+    
+        <div class="buttons">
+          <button onclick="displayStats()" id="endGameButton">Statistics</button>
+          <button onclick="changeHeroName()" id="chnageNameButton">Change Name</button>
         </div>
 
-        <div class="polaroid">
-          <img onclick="rest(hero); return false" id="imageRest" src="/home/aryunap/Aryuna-bb-hw1/images/sleep.png" alt="weekend over" style="width:100%;">
-          <div class="container">
-            <p>Get some rest</p>
-          </div>
-        </div>
-
-        <button onclick="displayStats()" id="endGameButton">Game Over</button>
-
-        <script src="/home/aryunap/Aryuna-bb-hw1/scripts/your_javascript_here.js"></script>
-        <!--script src="/home/aryunap/Aryuna-bb-hw1/scripts/tests.js"></script-->
+        <script src="./scripts/your_javascript_here.js"></script>
+        <script src="./scripts/tests.js"></script>
     </body>
 </html>
