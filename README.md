@@ -2,8 +2,7 @@
 
 First homework during the academy using basic JavaScript.
 There are four main sections with some instructions below.
-
-      ![alt text](https://github.com/ami619847/Aryuna-bb-hw1/blob/master/images/hero-game.png)
+<p align="center"><img src="./images/hero-game.png"></p>   
     
 ## Section 1. Creating the hero object
 
